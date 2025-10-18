@@ -1,2 +1,13 @@
-# agflow
-AutoGrad Flow (agflow): Visualize flow of states/parameter flow in autograd tree for neural networks and similar models
+# agviz
+AutoGrad Visualizer (agviz): Visualize dependencies between states/parameters in autograd tree.
+
+
+Unlike related packages (e.g. torvhviz), supports visualizing internal model states and distinguishing states/parameters. Also supports more complex visualization based on traversals of graph and merging nodes.
+
+# Installation:
+In the root directory run `pip install -e .`
+<br>
+You can then install the library in your python code using `from adviz import render' (see Examples)
+
+# Examples:
+**examples/gru:** Render the hidden states of a GRU for 5 timesteps, visualizing parameters and states.
