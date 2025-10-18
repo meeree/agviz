@@ -1,4 +1,4 @@
-# Example: render the hidden states of a GRU for 5 timesteps, visualizing parameters and states.
+# Example: render the hidden states of a RNN for 5 timesteps, visualizing parameters and states. Also, play with "full" rendering, where we show all the intermediate functions.
 import torch
 from agviz import render
 
@@ -12,12 +12,13 @@ def eval_to_list(cell, inp):
 
 if __name__ == '__main__':
     inputs = torch.randn((10, 5, 3)) # (batches, time, input dim).
-    cell = torch.nn.GRUCell(3, 100) # 3 = inp dim, 100 = hidden dim.
+    cell = torch.nn.RNNCell(3, 100) # 3 = inp dim, 100 = hidden dim.
     hjs = eval_to_list(cell, inputs)
     render(hjs[-1].sum(), {
             **{f'h{j}': (hj, 'state') for j, hj in enumerate(hjs)},                # State of GRU 
             **{name: (param, 'param') for name, param in cell.named_parameters()}  # GRU params
             },
             'example_ag_viz',
-            fmt = 'png'
+            fmt = 'png',
+            simplify = []# Don't simplify anything.
     )
