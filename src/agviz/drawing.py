@@ -20,7 +20,10 @@ def draw_all(G, color_edges = True, simplify = ['none', 'func'], **glob_attrs):
         dot.node(str(n), **attrs)
 
     color_cycle = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'] # Matplotlib default cycler.
-    for eidx, (u, v) in enumerate(G.edges()):
-        dot.edge(str(u), str(v), color = (color_cycle[eidx % len(color_cycle)] if color_edges else 'black'))
+    for eidx, (u, v, attr) in enumerate(G.edges(data = True)):
+        if 'color' in attr: 
+            dot.edge(str(u), str(v), color = attr['color'])
+        else:
+            dot.edge(str(u), str(v), color = (color_cycle[eidx % len(color_cycle)] if color_edges else 'black'))
 
     return dot
