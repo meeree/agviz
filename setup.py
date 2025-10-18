@@ -1,9 +1,5 @@
 from setuptools import setup, find_packages
 
-# Figure out requirements from requirements.txt. This was generated with pipreqs.
-with open("requirements.txt") as f:
-    install_requires = f.read().splitlines()
-
 setup(
     name="agviz",
     version="1.0.0",
@@ -14,7 +10,10 @@ setup(
     url="https://github.com/meeree/agviz",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
-    install_requires=install_requires,
+    install_requires=[
+        'graphviz',
+        'networkx'
+    ],
     python_requires=">=3.2",
     classifiers=[
         "Programming Language :: Python :: 3",
