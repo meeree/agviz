@@ -11,3 +11,5 @@ You can then install the library in your python code using `from adviz import re
 
 # Examples:
 **examples/gru:** Render the hidden states of a GRU for 5 timesteps, visualizing parameters and states.
+
+![Simple GRU Example](examples/gru/example_ag_viz.png)
