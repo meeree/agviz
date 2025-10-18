@@ -15,10 +15,12 @@ if __name__ == '__main__':
     cell = torch.nn.RNNCell(3, 100) # 3 = inp dim, 100 = hidden dim.
     hjs = eval_to_list(cell, inputs)
     render(hjs[-1].sum(), {
-            **{f'h{j}': (hj, 'state') for j, hj in enumerate(hjs)},                # State of GRU 
+            **{f'hidden[{j+1}]': (hj, 'state') for j, hj in enumerate(hjs)},                # State of GRU 
             **{name: (param, 'param') for name, param in cell.named_parameters()}  # GRU params
             },
             'example_ag_viz',
             fmt = 'png',
+            penwidth = '10',
+            color_edges = False,
             simplify = []# Don't simplify anything.
     )
