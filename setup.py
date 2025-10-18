@@ -15,8 +15,4 @@ setup(
         'networkx'
     ],
     python_requires=">=3.2",
-    classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-    ],
 )
